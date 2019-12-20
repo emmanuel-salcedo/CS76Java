@@ -1,0 +1,39 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2511
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red34\green45\blue53;\red43\green138\blue83;\red0\green0\blue0;
+\red15\green112\blue1;\red255\green255\blue255;\red158\green0\blue3;}
+{\*\expandedcolortbl;;\cssrgb\c17647\c23137\c27059;\cssrgb\c20000\c60000\c40000;\cssrgb\c0\c0\c0;
+\cssrgb\c0\c50196\c0;\cssrgb\c100000\c100000\c100000;\cssrgb\c69020\c0\c0;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs32 \cf2 \expnd0\expndtw0\kerning0
+Graphs\
+Write a program that reads the data for a graph from\'a0 a file and determines whether the graph is connected. The first line in the file contains a number that indicates the number of vertices (\cf3 n). The vertices are labeled as \cf5 0\cf3 , 1, 2, . . ., \cf5 n -1\cf3 . Each subsequent line, with the format u v1 v2, . . ., describes edges (u, v1), (u,v2), (u,v3), and so on. The following gives examples of two files that serve as input to your program:\cf2 \
+\cf3 First File\'a0\cf2 \
+\cf3 6\cf2 \
+\cf3 0 1 2\cf2 \
+\cf3 1 0 3\cf2 \
+\cf3 2 0 3 4\cf2 \
+\cf3 3 1 2 4 5\cf2 \
+\cf3 4 2 3 5\cf2 \
+\cf3 5 3 4\cf2 \
+S\cf3 econd File:\cf2 \
+\cf3 6\cf2 \
+\cf3 0 1 2 3\'a0\cf2 \
+\cf3 1 0 3\cf2 \
+\cf3 2 0 3\cf2 \
+\cf3 3 0 1 2\cf2 \
+\cf3 4 5\cf2 \
+\cf3 5 4\cf2 \
+\cf3 Your program should prompt the user to enter a URL for the file, read the data from the file, create an instance \cf5 g\cf3  of UnweightedGraph, invoke\cb6  g. print edges( )\cb1  to display the edges, and invoke dfs ( ) to obtain an instance tree of UnweightedGraph<V>.SearchTree\cf7 .\cf3  If tree.getNumberOfVerticesFound( ) is the same as the number of vertices in the graph, the graph is connected.\cf2 \
+\cf3 Sample output:\cf2 \
+\cf3 Enter a URL: https://liveexample.pearson.com/test/GraphSample1.txt [Enter]\cf2 \
+\cf3 The number of vertices is 6\cf2 \
+\cf3 Vertex 0: \'a0 (0, 1),\'a0 (0,2)\cf2 \
+\cf3 Vertex 1: \'a0 (1, 0),\'a0 (1, 3)\cf2 \
+\cf3 . . .\cf2 \
+\cf3 Vertex 5:\'a0 (5, 3)\'a0 (5, 4)\cf2 \
+\cf3 The graph is connected.\cf2 \
+\cf3 See the textbook, Exercise 28.1, pages 1077-78 for more details.}

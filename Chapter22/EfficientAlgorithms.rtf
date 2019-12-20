@@ -1,0 +1,103 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2511
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 Helvetica-Oblique;}
+{\colortbl;\red255\green255\blue255;\red34\green45\blue53;\red43\green138\blue83;\red0\green0\blue0;
+\red15\green112\blue1;}
+{\*\expandedcolortbl;;\cssrgb\c17647\c23137\c27059;\cssrgb\c20000\c60000\c40000;\cssrgb\c0\c0\c0;
+\cssrgb\c0\c50196\c0;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs32 \cf2 \expnd0\expndtw0\kerning0
+(
+\f1\i \cf3 Closest pair of points
+\f0\i0 \cf2 ) Section 22.8 introduced the following algorithm for finding the closest pair of points using a divide-and-conquer approach:\
+Step 1: Sort the points in increasing order of x-coordinates. For the points with the same x-coordinates, sort on y-coordinates. The result should be a sorted collection of points denoted by S.\
+Step 2: Divide S into two subsets, S
+\fs20 1
+\fs32  and S
+\fs20 2
+\fs32 , of equal size about the midpoint of the sorted list S. Include the midpoint in S
+\fs20 1
+\fs32 . Recursively find the closest pair in S
+\fs20 1
+\fs32  and S
+\fs20 2
+\fs32 . Let d
+\fs20 1
+\fs32  and d
+\fs20 2
+\fs32  denote the distance of closest pairs in the two subsets, respectively.\'a0\
+Step 3: Find the closest pair between a point in S
+\fs20 1
+\fs32  and a point in S
+\fs20 2
+\fs32  and denote the distance between them as d
+\fs20 3
+\fs32 . The closest pair is the one with distance equal to the minimum of \{d
+\fs20 1
+\fs32 , d
+\fs20 2,\'a0
+\fs32 d
+\fs20 3
+\fs32 \}.\
+\pard\pardeftab720\partightenfactor0
+\cf3 The Algorithm for Obtaining stripL and stripR is:\cf2 \
+for each point p in pointsOrderedOnY\
+\'a0 if (p is in S1 and mid.x - p.x\'a0 <= d)\
+\'a0 \'a0\'a0 append p to stripL;\
+\'a0 else if (p is in S2 and p.x - mid.x <= d)\
+\'a0 \'a0\'a0 append p to stripR;\
+\'a0\
+\cf3 Algorithm for Finding the Closest Pair in Step 3\cf2 \
+d = min(d
+\fs20 1
+\fs32 , d
+\fs20 2
+\fs32 );\
+r = 0;\'a0\cf3  // r is the index of a point in stripR\cf2 \
+\pard\pardeftab720\partightenfactor0
+\cf2 for (each point p in stripL) \{\
+\'a0\'a0 \cf3 // Skip the points in stripR below p.y - d\cf2 \
+\'a0\'a0 while (r < stripR.length && q[r].y <= p.y - d)\'a0\
+\'a0 \'a0 \'a0\'a0 r++;\
+\'a0 \'a0 let r1 = r;\
+\'a0 \'a0 while (r1 < stripR.length && |q[r1].y - p.y| <= d) \{\
+\'a0 \'a0 \'a0\'a0 \cf3 // Check if (p, q[r1] is a possible closest pair\cf2  \'a0\'a0\
+\'a0 \'a0 \'a0\'a0 if (distance(p, q[r1]) < d) \{\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 d = distance(p, q[r1]);\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0 (p, q[r1]) is now the current closest pair;\
+\'a0 \'a0 \'a0 \}\
+\'a0 \'a0 \'a0 r1 = r1 + 1;\
+\'a0 \'a0 \}\
+\}\
+\'a0\
+Implement the algorithm to meet the following requirements:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Define\'a0 a class named \cf3 Pair\cf2  with data fields\cf3  p1\cf2  and \cf5 p2\'a0to represent two points and a method named \cf3 getDistance()\cf5  that returns the distance between the two points.\cf2 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0\cf5 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Implement the following methods:\cf2 \
+\pard\pardeftab720\partightenfactor0
+\cf5 /** Return the distance of the closest pair of points */\cf2 \
+\pard\pardeftab720\partightenfactor0
+\cf5 public static Pair getClosestPair(double [ ] [ ]\'a0 points)\cf2 \
+\'a0\
+\cf5 /\cf3 ** Return the distance of the closest pair of points */\cf2 \
+public\cf5  static Pair getClosestPair(Point2D [ ] points)\cf2 \
+\'a0\
+\cf5 /\cf3 ** Return the distance of the closest pair of points in pointsOrderedOnX[low, high]. This is a recursive method. pointsOrderedOnX and pointsOrderedOnY are not changed in the subsequent recursive calls.*/\cf2 \
+\cf5 public static Pair distance(Point 2D [ ] pointsOrderedOnX, int low, int high, Point2D [ ]pointsOrderedOnY)\cf2 \
+\'a0\
+\pard\pardeftab720\partightenfactor0
+\cf3 /** Compute the distance between two points p1 and p2 */\cf2 \
+\pard\pardeftab720\partightenfactor0
+\cf5 public static double distance(Point2D p1, Point2D p2)\cf2 \
+\'a0\
+\pard\pardeftab720\partightenfactor0
+\cf3 /** Compute the distance between points (x1, y1) and (x2, y2) */\cf2 \
+\pard\pardeftab720\partightenfactor0
+\cf5 public static double distance(double x1, double y1, double x2, double y2)}
